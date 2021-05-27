@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>open和close</title>
+</head>
+<body>
+<script>
+  /*
+  BOM编程过程中，window是顶级窗口,代表浏览器窗口
+  window 有 close 和 open 方法 可以打开和关闭窗口
+   */
+</script>
+<input type="button" value="开启百度(新窗口)" onclick="window.open('https://www.baidu.com');">
+<input type="button" value="开启百度(当前窗口)" onclick="window.open('https://www.baidu.com', '_self');">
+<input type="button" value="开启百度(新窗口)" onclick="window.open('https://www.baidu.com', '_blank');">
+<input type="button" value="开启百度(父窗口)" onclick="window.open('https://www.baidu.com', '_parent');">
+<input type="button" value="开启百度(顶级窗口)" onclick="window.open('https://www.baidu.com', '_top');">
+<input type="button" value="关闭窗口" onclick="window.close();">
+
+
+
+</body>
+</html>

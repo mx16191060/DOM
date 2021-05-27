@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    004页面
+    <script>
+        // 如果该窗口不是顶级窗口，将该窗口设置为顶级窗口
+        // window代表当前浏览器窗口
+        // window.top 表示当前窗口顶级窗口
+        // window.self 表示自己这个窗口
+        function setTop(){
+            if (window.top != window.self)
+                window.top.location = window.self.location
+        }
+
+    </script>
+    <input type="button" value="将当前窗口设置为顶级窗口" onclick="setTop()">
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>弹出消息框和确认框</title>
+</head>
+<script>
+  function del(){
+    let ok = window.confirm('亲，确认删除数据吗')
+    ok? alert('true'):alert('false')
+  }
+</script>
+<body>
+<input type="button" value="弹出消息框" onclick="window.alert('123123')">
+<input type="button" value="删除" onclick="del()">  <!-- 删除数据需要用户进行确认-->
+</body>
+</html>

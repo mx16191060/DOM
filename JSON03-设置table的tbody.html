@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>设置table的tbody</title>
+</head>
+<body>
+    <script>
+        let data = {
+            "total" : 4,
+            "emp" : [
+                {"empno": 7369, "ename" : "SMITH", "sal" : 800 },
+                {"empno": 7369, "ename" : "SMITH", "sal" : 800 },
+                {"empno": 7369, "ename" : "SMITH", "sal" : 800 },
+                {"empno": 7369, "ename" : "SMITH", "sal" : 800 },
+            ]
+        }
+        window.onload = function (){
+            document.getElementById('mbt').onclick = function (){
+                let html = ""
+                let emps = data.emp
+                for (let i = 0; i < emps.length; i++) {
+                    html += "<tr>"
+                    html +=  "<th>"+emps[i].empno+"</th>"
+                    html +=  "<th>"+emps[i].ename+"</th>"
+                    html +=  "<th>"+emps[i].sal+"</th>"
+                    html += "</tr>"
+                }
+                document.getElementById('tbd').innerHTML=html
+            }
+        }
+
+    </script>
+    <input type="button" value="显示员工信息列表" id="mbt">
+    <h2>员工信息列表</h2>
+    <table>
+        <tr>
+            <th>员工编号</th>
+            <th>员工名字</th>
+            <th>员工薪资</th>
+        </tr>
+        <tbody id="tbd">
+            <!--
+            <tr>
+                <th>7369</th>
+                <th>smith</th>
+                <th>800</th>
+            </tr>
+            <tr>
+                <th>7369</th>
+                <th>smith</th>
+                <th>800</th>
+            </tr>
+            <tr>
+                <th>7369</th>
+                <th>smith</th>
+                <th>800</th>
+            </tr>
+            -->
+        </tbody>>
+    </table>
+    总共<span></span>条记录
+</body>
+</html>
