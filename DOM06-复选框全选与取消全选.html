@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>复选框全选与取消全选</title>
+</head>
+    <script>
+        window.onload=function () {
+            let firstChkObj = document.getElementById('firstChk')
+            let hobbies = document.getElementsByName('hobby')
+            document.getElementById('firstChk').onclick = function () {
+                    for (let i = 0; i < hobbies.length; i++) {
+                        hobbies[i].checked = firstChkObj.checked
+                    }
+            }
+
+            let all = hobbies.length
+            for (let i = 0; i < hobbies.length; i++) {
+                hobbies[i].onclick = function (){
+                    let checkCount = 0
+                    for (let j = 0; j < hobbies.length; j++) {
+                        if (hobbies[j].checked == true)
+                            checkCount++
+                    }
+                    firstChkObj.checked = (all == checkCount)
+                }
+            }
+        }
+    </script>
+<body>
+    <input type="checkbox" id="firstChk"><br>
+    <input type="checkbox" name="hobby" value="smoke">smoke<br>
+    <input type="checkbox" name="hobby" value="drink">drink<br>
+    <input type="checkbox" name="hobby" value="tangtou">烫头<br>
+</body>
+</html>
