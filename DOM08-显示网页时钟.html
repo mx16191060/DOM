@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>显示网页时钟</title>
+</head>
+<body>
+<script>
+  /*
+  关于js中内置的支持类，Date，可以用来获取时间
+   */
+  //获取当前时间
+  let nowTime = new Date()
+  //输出
+  document.write(nowTime + '<br>')
+  // 转化成本地语言环境的日期格式
+  document.write(nowTime.toLocaleString() + '<br>')
+
+  // 当以上日期不是自己想要的，可以用过日期获取年月日等信息，自定义日期格式
+  let t = new Date()
+  let year = t.getFullYear()
+  let month = t.getMonth()
+  let day = t.getDate()
+  document.write(year+'年'+(month+1)+'月'+day+'日')
+
+  let time = t.getTime()
+  document.write(time)
+
+  function displayTime(){
+    let time = new Date()
+    let timeString = time.toLocaleString()
+    document.getElementById('mdv').innerText=timeString
+  }
+  let v
+  window.onload=function (){
+    document.getElementById('mbt').onclick=function (){
+      v = window.setInterval('displayTime()',1000)  // 每隔1s调用一次displayTime函数
+    }
+
+    document.getElementById('mbt2').onclick=function (){
+      window.clearInterval(v)
+    }
+  }
+</script>
+<input type="button" id="mbt" value="获取当前时间">
+<input type="button" id="mbt2" value="获取时间停止">
+<div id="mdv"></div>
+</body>
+</html>

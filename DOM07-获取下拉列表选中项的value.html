@@ -5,6 +5,24 @@
     <title>获取下拉列表选中项的value</title>
 </head>
 <body>
-
+<!--    <select onchange="alert(this.value)">-->
+<!--        <option value="1">1</option>-->
+<!--        <option value="2">2</option>-->
+<!--        <option value="3">3</option>-->
+<!--        <option value="4">4</option>-->
+<!--    </select>-->
+<script>
+    window.onload=function (){
+        document.getElementById('select').onchange=function (){
+            alert(this.value)
+        }
+    }
+</script>
+    <select id="select">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+    </select>
 </body>
 </html>
