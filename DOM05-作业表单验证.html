@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作业表单验证</title>
+</head>
+<body>
+    <script>
+        /*
+        1）用户名不能为空
+        2）用户名在6-14位之间
+        3）用户名只能由字母和数字组成，不能含有其他符号
+        4）密码和确认密码一致，邮箱地址合法
+        5）统一失去焦点验证
+        6）错误信息显示在span标签中，字体12号，红色
+        7）文本获取焦点时清空错误信息，如果文本框信息不合法要求清空文本框中的value
+        8）最终表单所有项合法之后方可提交
+         */
+        window.onload = function (){
+            //用户名测试
+            let userNameObj = document.getElementById('userName')
+            let userNameSpan = document.getElementById('userNameSpan')
+            // 失去焦点动作
+            userNameObj.onblur=function (){
+                let isUserNameOk = /^[a-z0-9A-Z]{6,14}$/.test(userNameObj.value)
+                if (isUserNameOk)
+                    return
+                else {
+                    userNameSpan.innerText = '用户名长度必须由6-14字符之间的字母和数字组成'  //提示信息
+                }
+            }
+            // 得到焦点动作
+            userNameObj.onfocus=function (){
+                let isUserNameOk = /^[a-z0-9A-Z]{6,14}$/.test(userNameObj.value)
+                if (isUserNameOk)
+                    return
+                else {
+                    userNameSpan.innerText = ''   // 清空提示
+                    userNameObj.value = '' // 清空userName
+                }
+            }
+            //密码测试
+            let passwordObj = document.getElementById('password')
+            let passwordSpan = document.getElementById('passwordSpan')
+            // 失去焦点动作
+            //
+            passwordObj.onblur=function (){
+                let isPasswordOk = 	/^[a-z0-9A-Z]{6,18}$/.test(passwordObj.value)
+                if (isPasswordOk)
+                    return
+                else {
+                    passwordSpan.innerText = '密码长度必须由8-16字符之间的字母和数字组成'  //提示信息
+                }
+            }
+            // 得到焦点动作
+            passwordObj.onfocus=function (){
+                let isPasswordOk = 	/^[a-z0-9A-Z]{6,18}$/.test(passwordObj.value)
+                if (isPasswordOk)
+                    return
+                else {
+                    passwordSpan.innerText = ''   // 清空提示
+                    passwordObj.value = '' // 清空userName
+                }
+            }
+
+            // 确认密码
+            let password2Obj = document.getElementById('password2')
+            let password2Span = document.getElementById('password2Span')
+            // 失去焦点动作
+            //
+            password2Obj.onblur=function (){
+                passwordObj = document.getElementById('password')
+                let isPassword2Ok = password2Obj.value == passwordObj.value
+                if (isPassword2Ok)
+                    return
+                else {
+                    password2Span.innerText = '请再次确认密码'  //提示信息
+                }
+            }
+            // 得到焦点动作
+            password2Obj.onfocus=function (){
+                let isPassword2Ok = password2Obj.value == passwordObj.value
+                if (isPassword2Ok)
+                    return
+                else {
+                    password2Span.innerText = ''   // 清空提示
+                    password2Obj.value = '' // 清空userName
+                }
+            }
+
+            // 邮箱验证
+            let emailObj = document.getElementById('email')
+            let emailSpan = document.getElementById('emailSpan')
+            emailObj.onblur=function (){
+                let isEmailOk = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/.test(emailObj.value)
+                if (isEmailOk)
+                    return
+                else {
+                    emailSpan.innerText = '邮箱格式错误'  //提示信息
+                }
+            }
+            // 得到焦点动作
+            emailObj.onfocus=function (){
+                let isEmailOk = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/.test(emailObj.value)
+                if (isEmailOk)
+                    return
+                else {
+                    emailSpan.innerText = ''   // 清空提示
+                    emailObj.value = '' // 清空userName
+                }
+            }
+            // 提交按钮
+            let submitObj = document.getElementById('submit')
+            submitObj.onclick = function (){
+                let isUserNameOk = /^[a-z0-9A-Z]{6,14}$/.test(userNameObj.value)
+                let isPasswordOk = 	/^[a-z0-9A-Z]{6,18}$/.test(passwordObj.value)
+                let isPassword2Ok = password2Obj.value == passwordObj.value
+                let isEmailOk = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/.test(emailObj.value)
+                if (isPasswordOk & isEmailOk & isUserNameOk & isPassword2Ok){
+                    alert('提交成功')
+                } else
+                    alert('提交失败')
+            }
+        }
+    </script>
+    用户名：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" id="userName">
+    <span id="userNameSpan" style="color: red;font-size: 12px"></span><br>
+    密码：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="password" id="password">
+    <span id="passwordSpan" style="color: red;font-size: 12px"></span><br>
+    请确认密码：<input type="password" id="password2">
+    <span id="password2Span" style="color: red;font-size: 12px"></span><br>
+    邮箱：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" id="email">
+    <span id="emailSpan" style="color: red;font-size: 12px"></span><br>
+    &nbsp&nbsp&nbsp&nbsp&nbsp<input type="button" value="提交" id="submit">
+    <input type="reset" value="重置" id="reset">
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>去除字符串前后的空白</title>
+</head>
+<body>
+<script>
+    /*
+    老版本的ie浏览器不支持trim函数
+    可以自己给String扩展一个trim函数
+     */
+    String.prototype.trim = function (){
+        return this.replace(/^\s+/,"").replace(/\s+$/,"")
+    }
+    window.onload=function (){
+        document.getElementById('mbt').onclick=function (){
+            alert(document.getElementById('mtt').value.trim())
+        }
+    }
+</script>
+<input type="text" id="mtt">
+<input type="button" value="print" id="mbt">
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正则表达式</title>
+</head>
+<body>
+<script>
+  /*
+  1、什么是正则表达式，正则表达式有什么用？
+    正则表达式：Regular Expression
+    正则表达式主要用于字符串匹配
+  2、正则表达式是一门独立的语言，在c中支持，在java中支持在，js中也支持
+    大部分编程语言都支持正则表达式，正则表达式最初使用在医学方面，用来表示神经符号，目前使用最多的
+    是计算机编程领域，用作字符串格式匹配，包括搜索方面等
+  3、正则表达式对于js编程需要掌握到什么程度，需要掌握哪些内容？
+    第一：常见正则表达式要认识
+    第二：简单的正则表达式要会写
+    第三：别人写的正则表达式要能看懂
+    第四：在js中怎么创建正则表达式
+    第五：在js中，正则表达式对象有哪些
+  4、常见的正则表达式
+    . 匹配除换行符意外的任意字符
+    \w 匹配字母或数字或下划线或数字
+    \s 匹配任意的空白字符
+    \d 匹配数字
+    \b 匹配字母的开始或者结束
+    ^ 匹配字符串的开始
+    $ 匹配字符串的结束
+
+    * 重复零次或更多次
+    + 重复一次或更多次
+    ？ 重复零次或一次
+    {n} 重复n次
+    {n,} 重复n次或更多次
+    {n,m} 重复n次到m次
+
+    \W 匹配任意不是字母或者数字或下划线
+    \S 匹配任意不是空白符
+    \D 匹配任意非数字的字符
+    \B 匹配不是单词开头或结尾的任意字符
+    [^x] 匹配除x以外的任意字符
+    [^aeiou] 匹配除aeiou以外的字符
+
+    正则表达式中的小括号优先级较高
+    [1-9]表示1-9中的任意一个数字（次数是1次）
+    [a-zA-Z0-9]表示a到z A-Z 0-9中的任意一个字符
+    [a-zA-Z0-9-]a到z A-Z 0-9 - 中任意一个字符
+  5、怎么创建正则表达式
+    第一种方式
+        let regExp = /正则表达式/flags
+    第二种方式
+        let regExp = new regExp("正则表达式","flags")
+    关于flags
+        g：全局匹配
+        i：忽略大小写
+        m：多行搜索（ES规范之后才支持m）当前面是正则表达式的时候m不能用，当前面是普通字符串之后m才可以使用
+
+   6、正则表达式的text方法？
+    true / false = 正则表达式.test(用户填写的字符串)；
+    true 表示正则表达式匹配成功
+    false 表示正则表达式匹配失败
+   */
+  window.onload=function (){
+      document.getElementById('mbt').onclick=function (){
+          let email = document.getElementById('mtt').value
+          let ok = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/.test(email)
+          if(ok)
+              document.getElementById('email Error').innerText = '邮箱合法'
+          else
+              document.getElementById('email Error').innerText = '邮箱信息不合法'
+      }
+      document.getElementById('mtt').onfocus=function (){
+          document.getElementById('email Error').innerText=''
+      }
+  }
+</script>
+<input type="text" id="mtt">
+<span id="email Error" style="color: red; font-size: 12px;"></span>
+<input type="button" value="验证邮箱" id="mbt">
+</body>
+</html>
